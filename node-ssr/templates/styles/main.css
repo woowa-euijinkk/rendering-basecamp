@@ -1,5 +1,3 @@
-@import './colors.css';
-
 * {
   box-sizing: border-box;
 }
@@ -24,6 +22,7 @@ button {
   border: 0;
   padding: 0;
   cursor: pointer;
+  background: none;
 }
 
 button.primary {
@@ -53,7 +52,7 @@ button.primary {
   padding: 6px 16px;
 }
 
-#app {
+#wrap {
   width: 100vw;
   min-height: 100vh;
   display: flex;
@@ -143,8 +142,35 @@ footer.footer p:not(:last-child) {
   background-color: transparent;
 }
 
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
 .loading-spinner {
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid var(--color-lightblue-90);
+  border-radius: 50%;
   animation: spin 1s linear infinite;
+  width: 60px;
+  height: 60px;
+  border-width: 4px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* 모달 내부 로딩 스타일 */
+.modal .loading-container {
+  min-height: 200px;
 }
 
 .error-container {
@@ -255,23 +281,28 @@ input:-webkit-autofill {
   }
 }
 
-.toast {
+.toast-container {
   position: fixed;
   top: 20px;
   left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+}
+
+.toast {
   background-color: var(--color-white);
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--color-bluegray-100);
   padding: 20px;
   border-radius: 6px;
-  z-index: 9999;
   display: flex;
   align-items: center;
   min-width: 300px;
   opacity: 1;
   transition: opacity 0.3s ease;
   animation: toast-fade-in 0.3s ease forwards;
+  margin-bottom: 10px;
 }
 
 .toast-button-container {
