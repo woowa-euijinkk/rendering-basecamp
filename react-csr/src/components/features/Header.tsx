@@ -36,7 +36,7 @@ export const Header = () => {
         <div className="top-rated-container">
           {/* 헤더 섹션 (로고 + 검색바) */}
           <IconButton
-            src="./images/logo.png"
+            src="/images/logo.png"
             width="117"
             height="20"
             onClick={handleLogoClick}
