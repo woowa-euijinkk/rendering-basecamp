@@ -86,15 +86,14 @@
 /* 영화 정보 라인 */
 .movie-info-line {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
+  gap: 16px;
 }
 
 .movie-meta {
   color: var(--color-bluegray-30);
   font-size: 0.9rem;
-  flex: 1;
 }
 
 .movie-rating {
