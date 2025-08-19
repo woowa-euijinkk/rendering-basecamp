@@ -13,7 +13,7 @@ const __dirname = path.dirname(__filename);
 const router = Router();
 
 router.get("/", (_, res) => {
-  const templatePath = path.join(__dirname, "../../../views", "index.html");
+  const templatePath = path.join(__dirname, "../../../public", "index.html");
   const renderedApp = renderToString(<App />);
 
   const template = fs.readFileSync(templatePath, "utf-8");
