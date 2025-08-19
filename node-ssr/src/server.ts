@@ -213,7 +213,7 @@ app.get("/detail/:id", async (_req: Request, res: Response) => {
 });
 
 // 정적 파일 서빙 (라우트 처리 후)
-app.use(express.static(path.join(__dirname, "../templates")));
+app.use(express.static(path.join(__dirname, "../public")));
 
 // 서버 시작
 app.listen(PORT, (): void => {
