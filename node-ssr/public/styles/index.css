@@ -1,8 +1,8 @@
-@import './colors.css';
-@import './main.css';
-@import './modal.css';
 @import './reset.css';
+@import './colors.css';
 @import './text.css';
+@import './main.css';
 @import './thumbnail.css';
+@import './modal.css';
 @import './animation.css';
 @import './media.css';
