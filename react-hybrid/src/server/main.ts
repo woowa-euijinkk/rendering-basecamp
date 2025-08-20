@@ -1,9 +1,9 @@
-import "./config.js";
+import "./config";
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 
-import movieRouter from "./routes/index.js";
+import movieRouter from "./routes/index";
 
 const app = express();
 const PORT = 3000;

@@ -5,7 +5,7 @@ const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   mode: "development",
-  entry: "./src/client/main.js",
+  entry: "./src/client/main.tsx",
   output: {
     path: path.resolve("dist/static"),
     filename: "bundle.js",
@@ -15,12 +15,16 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(jsx?)$/,
+        test: /\.(jsx?|tsx?)$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"],
+            presets: [
+              "@babel/preset-env", 
+              ["@babel/preset-react", { "runtime": "automatic" }],
+              ["@babel/preset-typescript", { "isTSX": true, "allExtensions": true }]
+            ],
           },
         },
       },
@@ -52,6 +56,6 @@ module.exports = {
     new Dotenv(),
   ],
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
 };

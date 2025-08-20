@@ -4,20 +4,24 @@ const nodeExternals = require("webpack-node-externals");
 module.exports = {
   mode: "development",
   target: "node",
-  entry: path.resolve(__dirname, "src/server/main.js"),
+  entry: path.resolve(__dirname, "src/server/main.ts"),
   externals: [nodeExternals()],
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
   module: {
     rules: [
       {
-        test: /\.(jsx?)$/,
+        test: /\.(jsx?|tsx?)$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"],
+            presets: [
+              "@babel/preset-env", 
+              ["@babel/preset-react", { "runtime": "automatic" }],
+              ["@babel/preset-typescript", { "isTSX": true, "allExtensions": true }]
+            ],
           },
         },
       },
