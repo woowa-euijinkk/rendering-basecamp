@@ -18,7 +18,7 @@ router.get("/", (_: Request, res: Response) => {
 
   const renderedApp = renderToString(<App />);
 
-  template.replace(
+  const renderedHTMLWithInitialData = template.replace(
     "<!--${INIT_DATA_AREA}-->",
     /*html*/ `
     <script>
@@ -28,7 +28,7 @@ router.get("/", (_: Request, res: Response) => {
     </script>
   `
   );
-  const renderedHTML = template.replace(
+  const renderedHTML = renderedHTMLWithInitialData.replace(
     "<!--${MOVIE_ITEMS_PLACEHOLDER}-->",
     renderedApp
   );
