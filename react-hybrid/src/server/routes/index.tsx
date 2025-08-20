@@ -14,19 +14,20 @@ const router = Router();
 
 router.get("/", (_: Request, res: Response) => {
   const templatePath = path.join(__dirname, "../../../public", "index.html");
+  const template = fs.readFileSync(templatePath, "utf-8");
+
   const renderedApp = renderToString(<App />);
 
-  const template = fs.readFileSync(templatePath, "utf-8");
-  // const initData = template.replace(
-  //   "<!--${INIT_DATA_AREA}-->",
-  //   /*html*/ `
-  //   <script>
-  //     window.__INITIAL_DATA__ = {
-  //       movies: ${JSON.stringify(popularMovies)}
-  //     }
-  //   </script>
-  // `
-  // );
+  template.replace(
+    "<!--${INIT_DATA_AREA}-->",
+    /*html*/ `
+    <script>
+      window.__INITIAL_DATA__ = {
+        movies: JSON.stringify([])
+      }
+    </script>
+  `
+  );
   const renderedHTML = template.replace(
     "<!--${MOVIE_ITEMS_PLACEHOLDER}-->",
     renderedApp
